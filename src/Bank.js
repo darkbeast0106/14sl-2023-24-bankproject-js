@@ -3,13 +3,36 @@
  * Bank műveleteit végrehajtó osztály.
  */
 class Bank {
+    #szamlak = [];
+
     /**
      * Új számlát nyit a megadott névvel, számlaszámmal, 0 Ft egyenleggel
      * @param {string} nev A számla tulajdonosának neve
      * @param {string} szamlaszam A számla számlaszáma
      */
     ujSzamla(nev, szamlaszam) {
-        
+        if(nev == null) {
+            throw new Error("Név nem lehet null");
+        }
+        if(szamlaszam == null) {
+            throw new Error("Számlaszám nem lehet null");
+        }
+        if(nev == "") {
+            throw new Error("Név nem lehet üres");
+        }
+        if(szamlaszam == "") {
+            throw new Error("Számlaszám nem lehet üres");
+        }
+        if (this.#szamlak.some(szamla => szamla.szamlaszam == szamlaszam)) {
+            throw new Error("Megadott számlaszámmal már létezik számla");
+        }
+
+        const ujSzamla = {
+            nev: nev,
+            szamlaszam: szamlaszam,
+            egyenleg: 0
+        }
+        this.#szamlak.push(ujSzamla);
     }
 
     /**
@@ -18,7 +41,8 @@ class Bank {
      * @returns {number} A számlán lévő egyenleg
      */
     egyenleg(szamlaszam) {
-        
+        const szamla = this.#szamlaKeres(szamlaszam);
+        return szamla.egyenleg;
     }
     
     /**
@@ -27,7 +51,18 @@ class Bank {
      * @param {number} osszeg A számlára helyezendő pénzösszeg
      */
     egyenlegFeltolt(szamlaszam, osszeg) {
+        const osszegEgeszErtek = parseInt(osszeg);
+        //console.log(osszeg, "=>", osszegEgeszErtek);
+        if (osszegEgeszErtek != osszeg) {
+            throw new Error("Az összeg csak egész szám lehet");
+        }
 
+        if (osszegEgeszErtek <= 0) {
+            throw new Error("Az összeg csak pozitív szám lehet");
+        }
+        
+        const szamla = this.#szamlaKeres(szamlaszam);
+        szamla.egyenleg += osszegEgeszErtek;
     }
 
     /**
@@ -40,6 +75,26 @@ class Bank {
      */
     utal(honnan, hova, osszeg) {
 
+    }
+
+    #szamlaKeres(szamlaszam) {
+        if (szamlaszam == null) {
+            throw new Error("Számlaszám nem lehet null");
+        }
+        if (szamlaszam == "") {
+            throw new Error("Számlaszám nem lehet üres");
+        }
+
+        let index = 0;
+        while (index < this.#szamlak.length && this.#szamlak[index].szamlaszam != szamlaszam) {
+            index++;
+        }
+
+        if (index == this.#szamlak.length) {
+            throw new Error("A megadott számlaszámmal nem található számla");
+        }
+
+        return this.#szamlak[index];
     }
 }
 
