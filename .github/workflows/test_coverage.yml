@@ -4,6 +4,9 @@ on:
         branches:
             - master
             - main
+
+permissions: write-all
+
 jobs:
     coverage:
         runs-on: ubuntu-latest
