@@ -3,6 +3,9 @@
  * Bank műveleteit végrehajtó osztály.
  */
 class Bank {
+    /**
+     * A bankban található számlákat tartalmazza
+     */
     #szamlak = [];
 
     /**
@@ -69,7 +72,7 @@ class Bank {
      * Két számla között utal.
      * Ha nincs elég pénz a forrás számlán, akkor false értékkel tér vissza, és nem történik utalás
      * @param {string} honnan A forrás számla számlaszáma
-     * @param {string} hova >A cél számla számlaszáma
+     * @param {string} hova A cél számla számlaszáma
      * @param {number} osszeg Az átutalandó egyenleg
      * @returns {boolean} Az utalás sikeressége
      */
@@ -77,6 +80,11 @@ class Bank {
 
     }
 
+    /**
+     * Megkeresi a számlát annak számlaszáma alapján
+     * @param {string} szamlaszam A keresett számla számlaszáma
+     * @returns {object} A megtalált számla
+     */
     #szamlaKeres(szamlaszam) {
         if (szamlaszam == null) {
             throw new Error("Számlaszám nem lehet null");
