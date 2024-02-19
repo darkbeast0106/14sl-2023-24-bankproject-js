@@ -77,7 +77,7 @@ class Bank {
      * @returns {boolean} Az utalás sikeressége
      */
     utal(honnan, hova, osszeg) {
-
+        const forrasSzamla = this.#szamlaKeres(honnan);
     }
 
     /**
