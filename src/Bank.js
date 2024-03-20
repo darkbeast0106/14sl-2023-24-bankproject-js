@@ -1,8 +1,7 @@
-// ECMAscript modul esetén export class Bank
 /**
  * Bank műveleteit végrehajtó osztály.
  */
-class Bank {
+export class Bank {
     /**
      * A bankban található számlákat tartalmazza
      */
@@ -55,7 +54,6 @@ class Bank {
      */
     egyenlegFeltolt(szamlaszam, osszeg) {
         const osszegEgeszErtek = parseInt(osszeg);
-        //console.log(osszeg, "=>", osszegEgeszErtek);
         if (osszegEgeszErtek != osszeg) {
             throw new Error("Az összeg csak egész szám lehet");
         }
@@ -77,9 +75,8 @@ class Bank {
      * @returns {boolean} Az utalás sikeressége
      */
     utal(honnan, hova, osszeg) {
-
+        // not implemented
     }
-
     /**
      * Megkeresi a számlát annak számlaszáma alapján
      * @param {string} szamlaszam A keresett számla számlaszáma
@@ -105,5 +102,3 @@ class Bank {
         return this.#szamlak[index];
     }
 }
-
-module.exports = { Bank };
