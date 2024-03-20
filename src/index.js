@@ -1,3 +1,3 @@
-const {Bank} = require("./Bank");
+import { Bank } from "./Bank";
 
 const bank = new Bank();

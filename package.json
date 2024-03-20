@@ -3,15 +3,17 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "jest",
-    "test:coverage": "jest --coverage",
+    "test": "vitest",
+    "test:coverage": "vitest --coverage",
     "docs": "jsdoc src -r -d docs"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "jest": "^29.7.0",
-    "jsdoc": "^4.0.2"
+    "@vitest/coverage-v8": "^1.4.0",
+    "jsdoc": "^4.0.2",
+    "vitest": "^1.4.0"
   }
 }

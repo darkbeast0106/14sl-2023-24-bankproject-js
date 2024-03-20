@@ -1,8 +1,5 @@
-/*
-ECMAscript modul esetén (JEST-nél csak további könyvtárakkal működik):
- import { Bank } from "./Bank";
-*/
-const { Bank } = require('./Bank');
+import { Bank } from "./Bank";
+import { beforeEach, expect, test } from "vitest";
 let bank;
 
 /*
