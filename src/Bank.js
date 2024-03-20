@@ -75,7 +75,7 @@ export class Bank {
      * @returns {boolean} Az utalás sikeressége
      */
     utal(honnan, hova, osszeg) {
-        // not implemented
+        const forrasSzamla = this.#szamlaKeres(honnan);
     }
     /**
      * Megkeresi a számlát annak számlaszáma alapján
